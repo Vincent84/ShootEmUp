@@ -11,7 +11,9 @@ public class PlayerController : MonoBehaviour
     Vector3 movement;                           // The vector to store the direction of the player's movement.
     Animator playerAnimator;                    // Reference to the animator component.
     Rigidbody playerRigidbody;                  // Reference to the player's rigidbody.
+
     bool isMoving;
+    bool isShooting;
 
     // Start is called before the first frame update
     void Awake()
@@ -27,6 +29,7 @@ public class PlayerController : MonoBehaviour
     {
 
         isMoving = Input.GetButton("Horizontal") || Input.GetButton("Vertical");
+        isShooting = Input.GetButton("Fire1");
 
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
@@ -76,6 +79,7 @@ public class PlayerController : MonoBehaviour
 
         // Tell the animator whether or not the player is walking.
         playerAnimator.SetBool("isWalking", isMoving);
+        playerAnimator.SetBool("isShooting", isShooting);
 
     }
 }
